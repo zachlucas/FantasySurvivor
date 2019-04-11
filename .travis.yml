@@ -1,21 +1,9 @@
-os: osx
-osx_image: xcode10.1
-
-cache:
-directories:
-# General SwiftPM
-# Danger Swift plugins, like Yams
-- .build
-- ~/.danger-swift
-
-install:
-# Grab the latest Danger JS from npm
-- npm install -g danger
-# Compile the Danger runtime
-- swift build
-
+language: node_js
+node_js:
+  - "6"
+before_install:
+  - rvm install 2.3.1
 script:
-# Run the Dangerfile.swift
-- swift run danger-swift ci
-
+  - "rvm use 2.3.1 && gem install danger  --version '~> 4.0' && danger"
+  - "npm test" 
 
