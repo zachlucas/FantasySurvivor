@@ -9,3 +9,12 @@ if github.pr_body.length < 5
   fail "Please provide a summary in the Pull Request description"
 end
 
+
+podfile_updated = !git.modified_files.grep(/Podfile/).empty?
+
+# Leave warning if Podfile changes
+if podfile_updated
+  warn "The `Podfile` was updated"
+end
+
+
