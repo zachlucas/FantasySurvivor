@@ -18,3 +18,5 @@ if podfile_updated
 end
 
 
+# Warn when there is no IODA in the title
+warn "No IODA in PR title" if !(github.pr_title.include? "IODA-")
